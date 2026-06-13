@@ -71,6 +71,8 @@ title: Olive Nail Boutique
   .btn--primary:hover{transform:scale(1.05);box-shadow:0 6px 24px -4px rgba(93,112,82,.25)}
   .btn--outline{background:transparent;color:var(--secondary);border:2px solid var(--secondary)}
   .btn--outline:hover{transform:scale(1.05);background:rgba(193,140,93,.08);box-shadow:var(--shadow-float)}
+  .btn--ghost{background:transparent;color:var(--primary)}
+  .btn--ghost:hover{transform:scale(1.05);background:rgba(93,112,82,.1)}
   .btn:active{transform:scale(.95)}
   .btn:focus-visible{outline:none;box-shadow:0 0 0 2px var(--background),0 0 0 4px var(--primary)}
   .btn--lg{height:3.5rem;padding:0 2.5rem;font-size:1.1rem}
@@ -90,7 +92,7 @@ title: Olive Nail Boutique
   .nav__brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
   .nav__logo{
     width:2.6rem;height:2.6rem;object-fit:cover;
-    border-radius:var(--blob);
+    border-radius:.85rem;
     border:2px solid rgba(93,112,82,.25);
   }
   .nav__name{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;letter-spacing:.01em}
@@ -123,7 +125,7 @@ title: Olive Nail Boutique
   .hero__inner{position:relative;z-index:1;max-width:56rem;margin:0 auto}
   .hero__logo-frame{
     width:11rem;height:11rem;margin:0 auto 2.5rem;
-    border-radius:var(--blob);
+    border-radius:2.5rem;
     overflow:hidden;
     border:4px solid #fff;
     box-shadow:var(--shadow-float);
@@ -156,7 +158,7 @@ title: Olive Nail Boutique
   @media(min-width:1024px){.welcome{grid-template-columns:1fr 1fr;gap:4rem}}
   .welcome__img-wrap{position:relative}
   .welcome__img{
-    border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
+    border-radius:2.5rem;
     overflow:hidden;
     box-shadow:var(--shadow-float);
     aspect-ratio:1/1;
@@ -266,7 +268,7 @@ title: Olive Nail Boutique
   .hours li{display:flex;justify-content:space-between;gap:1.5rem}
   .hours .closed{color:var(--secondary)}
   .map-frame{
-    border-radius:40% 60% 60% 40% / 45% 45% 55% 55%;
+    border-radius:2rem;
     overflow:hidden;
     border:4px solid #fff;
     box-shadow:var(--shadow-float);
@@ -328,10 +330,14 @@ title: Olive Nail Boutique
       </div>
       <span class="hero__eyebrow">Charlotte, North Carolina</span>
       <h1>Olive Nail Boutique</h1>
-      <p class="hero__tagline">Where elegance meets care. A calm, unhurried space for hands and feet with premium products, skilled technicians, and time that feels like your own.</p>
+      <p class="hero__tagline">Where elegance meets care. A calm, unhurried space for hands and feet — premium products, skilled technicians, and time that feels like your own.</p>
       <div class="hero__actions">
         <a class="btn btn--primary btn--lg" href="#menu">View our services</a>
         <a class="btn btn--outline btn--lg" href="#contact">Contact us</a>
+        <a class="btn btn--ghost btn--lg" href="https://www.instagram.com/olivenailboutique" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          Follow us on Instagram
+        </a>
       </div>
     </div>
   </header>
@@ -372,7 +378,7 @@ title: Olive Nail Boutique
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
           </div>
           <h3>Clean, tranquil environment</h3>
-          <p>A bright, calm space kept to the highest standards of cleanliness so you can truly unwind.</p>
+          <p>A bright, calm space kept to the highest standards of cleanliness — so you can truly unwind.</p>
         </div>
         <div class="card">
           <div class="card__icon">
@@ -390,7 +396,7 @@ title: Olive Nail Boutique
     <div class="section__inner" style="text-align:center">
       <p class="section__eyebrow">Our services</p>
       <h2>The full menu</h2>
-      <p class="section__lead" style="margin:0 auto">Browse our complete list of services and pricing below, or give us a call; we're happy to help you choose.</p>
+      <p class="section__lead" style="margin:0 auto">Browse our complete list of services and pricing below, or give us a call — we're happy to help you choose.</p>
       <div class="menu-grid">
         <div class="menu-frame menu-frame--left">
           <img src="https://olivenailboutique.com/menu3.png" alt="Olive Nail Boutique service menu, part 1">
@@ -516,7 +522,7 @@ title: Olive Nail Boutique
     <img class="nav__logo" src="https://olivenailboutique.com/olive12.jpg" alt="">
     <p><strong>Olive Nail Boutique</strong> · 816 Lamar Ave, Charlotte, NC 28204</p>
     <p><a href="tel:7045957078">(704) 595-7078</a> · <a href="mailto:olivenails25@gmail.com">olivenails25@gmail.com</a></p>
-    <p style="margin-top:.75rem"></p>
+    <p style="margin-top:.75rem">Where elegance meets care.</p>
   </footer>
 
 </body>
