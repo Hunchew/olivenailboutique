@@ -1,87 +1,523 @@
-
+---
+title: Olive Nail Boutique
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Olive Nail Boutique</title>
-</head>
-<body style="margin: 0; padding: 0; background-color: #F4F1EB; font-family: Georgia, serif; color: #2C2C2C;">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Olive Nail Boutique — Where elegance meets care</title>
+<meta name="description" content="Olive Nail Boutique in Charlotte, NC. A calm, handcrafted nail care experience. 816 Lamar Ave, Charlotte, NC 28204 — (704) 595-7078.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light only;
+    --background:#FDFCF8;
+    --foreground:#2C2C24;
+    --primary:#5D7052;
+    --primary-fg:#F3F4F1;
+    --secondary:#C18C5D;
+    --accent:#E6DCCD;
+    --accent-fg:#4A4A40;
+    --muted:#F0EBE5;
+    --muted-fg:#78786C;
+    --border:#DED8CF;
+    --shadow-soft:0 4px 20px -2px rgba(93,112,82,.15);
+    --shadow-float:0 10px 40px -10px rgba(193,140,93,.2);
+    --blob:60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',sans-serif;
+    background:var(--background);
+    color:var(--foreground);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  /* ---- Global grain texture ---- */
+  body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    opacity:.04;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;line-height:1.15;color:var(--foreground)}
+  img{max-width:100%;display:block}
+  a{color:inherit}
 
-  <!-- Header -->
-  </div>
-  <div style="background-color: #F4F1EB; padding: 20px 40px; border-bottom: 1px solid #5A6E44;">
-    <div style="max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center;">
-      <div style="font-size: 1.8em; font-weight: bold; color: #5A6E44;">Olive Nail Boutique</div>
-      <div style="font-size: 1em;">
-      <a href="tel:7045957078" style="padding: 8px 16px; background-color: #5A6E44; color: white; border-radius: 6px; text-decoration: none; font-size: 0.9em;">
-        Call (704) 595-7078
+  /* ---- Blobs ---- */
+  .blob{position:absolute;filter:blur(80px);opacity:.5;pointer-events:none;z-index:0}
+  .blob--moss{background:rgba(93,112,82,.35);border-radius:var(--blob)}
+  .blob--clay{background:rgba(193,140,93,.3);border-radius:40% 60% 70% 30% / 50% 60% 40% 50%}
+  .blob--sand{background:rgba(230,220,205,.9);border-radius:55% 45% 40% 60% / 60% 40% 60% 40%}
+
+  /* ---- Buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+    height:3rem;padding:0 2.25rem;border-radius:9999px;
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
+    text-decoration:none;cursor:pointer;border:none;
+    transition:all .3s ease;
+  }
+  .btn--primary{background:var(--primary);color:var(--primary-fg);box-shadow:var(--shadow-soft)}
+  .btn--primary:hover{transform:scale(1.05);box-shadow:0 6px 24px -4px rgba(93,112,82,.25)}
+  .btn--outline{background:transparent;color:var(--secondary);border:2px solid var(--secondary)}
+  .btn--outline:hover{transform:scale(1.05);background:rgba(193,140,93,.08);box-shadow:var(--shadow-float)}
+  .btn:active{transform:scale(.95)}
+  .btn:focus-visible{outline:none;box-shadow:0 0 0 2px var(--background),0 0 0 4px var(--primary)}
+  .btn--lg{height:3.5rem;padding:0 2.5rem;font-size:1.1rem}
+
+  /* ---- Navigation ---- */
+  .nav-wrap{position:sticky;top:1rem;z-index:100;padding:0 1rem}
+  .nav{
+    max-width:64rem;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:.6rem .75rem .6rem 1.25rem;
+    background:rgba(255,255,255,.7);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(222,216,207,.5);
+    border-radius:9999px;
+    box-shadow:var(--shadow-soft);
+  }
+  .nav__brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+  .nav__logo{
+    width:2.6rem;height:2.6rem;object-fit:cover;
+    border-radius:var(--blob);
+    border:2px solid rgba(93,112,82,.25);
+  }
+  .nav__name{font-family:'Fraunces',serif;font-weight:700;font-size:1.1rem;letter-spacing:.01em}
+  .nav__links{display:none;align-items:center;gap:.25rem;list-style:none}
+  .nav__links a{
+    text-decoration:none;font-weight:700;font-size:.95rem;color:var(--accent-fg);
+    padding:.5rem 1rem;border-radius:9999px;transition:all .3s ease;
+  }
+  .nav__links a:hover{background:rgba(93,112,82,.1);color:var(--primary)}
+  .nav__cta{display:none}
+  .nav__call-sm{font-weight:800;font-size:.9rem;color:var(--primary);text-decoration:none;padding:.5rem .9rem;border-radius:9999px;background:rgba(93,112,82,.1)}
+  @media(min-width:768px){
+    .nav__links{display:flex}
+    .nav__cta{display:inline-flex;height:2.6rem;padding:0 1.5rem;font-size:.9rem}
+    .nav__call-sm{display:none}
+  }
+
+  /* ---- Hero ---- */
+  .hero{position:relative;overflow:hidden;padding:6rem 1rem 8rem;text-align:center}
+  .hero .blob--moss{width:30rem;height:30rem;top:-10rem;left:-13rem;opacity:.32}
+  .hero .blob--clay{width:26rem;height:26rem;bottom:-8rem;right:-11rem;opacity:.3}
+  /* soft light halo keeps hero text easy to read over the blobs */
+  .hero::before{
+    content:"";position:absolute;z-index:0;
+    top:50%;left:50%;transform:translate(-50%,-50%);
+    width:min(60rem,120%);height:min(42rem,120%);
+    background:radial-gradient(ellipse at center, rgba(253,252,248,.92) 0%, rgba(253,252,248,.75) 45%, rgba(253,252,248,0) 75%);
+    pointer-events:none;
+  }
+  .hero__inner{position:relative;z-index:1;max-width:56rem;margin:0 auto}
+  .hero__logo-frame{
+    width:11rem;height:11rem;margin:0 auto 2.5rem;
+    border-radius:var(--blob);
+    overflow:hidden;
+    border:4px solid #fff;
+    box-shadow:var(--shadow-float);
+    transform:rotate(-2deg);
+    transition:transform .5s ease;
+  }
+  .hero__logo-frame:hover{transform:rotate(0deg) scale(1.03)}
+  .hero__logo-frame img{width:100%;height:100%;object-fit:cover}
+  .hero__eyebrow{
+    display:inline-block;font-weight:800;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--secondary);background:rgba(230,220,205,.5);
+    padding:.4rem 1.1rem;border-radius:9999px;margin-bottom:1.25rem;
+  }
+  .hero h1{font-size:3rem;font-weight:800;margin-bottom:1.25rem}
+  .hero__tagline{font-size:1.25rem;color:var(--muted-fg);max-width:34rem;margin:0 auto 2.5rem}
+  .hero__actions{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+  @media(min-width:768px){.hero h1{font-size:4.5rem}}
+
+  /* ---- Sections ---- */
+  .section{position:relative;padding:6rem 1rem}
+  .section__inner{max-width:72rem;margin:0 auto;position:relative;z-index:1}
+  .section--stone{background:rgba(240,235,229,.45)}
+  .section__eyebrow{font-weight:800;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--secondary);margin-bottom:.75rem}
+  .section h2{font-size:2.25rem;font-weight:700;margin-bottom:1rem}
+  @media(min-width:768px){.section h2{font-size:3rem}}
+  .section__lead{color:var(--muted-fg);font-size:1.1rem;max-width:42rem}
+
+  /* ---- Welcome ---- */
+  .welcome{display:grid;gap:3rem;align-items:center}
+  @media(min-width:1024px){.welcome{grid-template-columns:1fr 1fr;gap:4rem}}
+  .welcome__img-wrap{position:relative}
+  .welcome__img{
+    border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
+    overflow:hidden;
+    box-shadow:var(--shadow-float);
+    aspect-ratio:1/1;
+    background:var(--accent);
+  }
+  .welcome__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .welcome__img:hover img{transform:scale(1.05)}
+  .welcome p{margin-bottom:1.25rem;color:var(--accent-fg)}
+
+  /* ---- Why cards ---- */
+  .cards{display:grid;gap:2rem;margin-top:3.5rem}
+  @media(min-width:768px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{
+    background:#FEFEFA;
+    border:1px solid rgba(222,216,207,.5);
+    box-shadow:var(--shadow-soft);
+    padding:2.25rem 2rem;
+    transition:all .3s ease;
+  }
+  .card:nth-child(1){border-radius:4rem 2rem 2rem 2rem}
+  .card:nth-child(2){border-radius:2rem 2rem 4rem 2rem}
+  .card:nth-child(3){border-radius:2rem 4rem 2rem 2rem}
+  .card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -10px rgba(93,112,82,.15)}
+  .card__icon{
+    width:3.5rem;height:3.5rem;border-radius:1rem;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(93,112,82,.1);color:var(--primary);
+    margin-bottom:1.25rem;transition:all .3s ease;
+  }
+  .card:hover .card__icon{background:var(--primary);color:#fff}
+  .card h3{font-size:1.3rem;margin-bottom:.6rem}
+  .card p{color:var(--muted-fg);font-size:.98rem}
+
+  /* ---- Services / menu ---- */
+  .menu-grid{display:grid;gap:3rem;margin-top:3.5rem;justify-items:center}
+  @media(min-width:768px){.menu-grid{grid-template-columns:1fr 1fr;gap:2.5rem}}
+  .menu-frame{
+    background:#fff;
+    padding:.75rem;
+    border:4px solid #fff;
+    border-radius:1.5rem;
+    box-shadow:var(--shadow-float);
+    transition:transform .5s ease, box-shadow .5s ease;
+    max-width:34rem;
+  }
+  .menu-frame img{border-radius:1rem}
+  .menu-frame--left{transform:rotate(-2deg)}
+  .menu-frame--right{transform:rotate(1.5deg)}
+  .menu-frame:hover{transform:rotate(0deg) scale(1.02);box-shadow:0 20px 50px -12px rgba(93,112,82,.25)}
+
+  /* ---- Instagram photo grid ---- */
+  .gallery-grid{
+    display:grid;gap:1.25rem;margin:3.5rem auto 0;
+    grid-template-columns:repeat(2,1fr);
+    max-width:64rem;
+  }
+  @media(min-width:768px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:1.75rem}}
+  .gallery-tile{
+    position:relative;overflow:hidden;
+    aspect-ratio:1/1;
+    background:var(--accent);
+    border:4px solid #fff;
+    box-shadow:var(--shadow-soft);
+    transition:all .4s ease;
+  }
+  .gallery-tile:nth-child(1){border-radius:3.5rem 1.5rem 1.5rem 1.5rem;transform:rotate(-1.2deg)}
+  .gallery-tile:nth-child(2){border-radius:1.5rem 1.5rem 3.5rem 1.5rem;transform:rotate(.8deg)}
+  .gallery-tile:nth-child(3){border-radius:1.5rem 3.5rem 1.5rem 1.5rem;transform:rotate(-.6deg)}
+  .gallery-tile:nth-child(4){border-radius:1.5rem 1.5rem 1.5rem 3.5rem;transform:rotate(1deg)}
+  .gallery-tile:nth-child(5){border-radius:3rem 1.5rem 3rem 1.5rem;transform:rotate(-.9deg)}
+  .gallery-tile:nth-child(6){border-radius:1.5rem 3rem 1.5rem 3rem;transform:rotate(1.1deg)}
+  .gallery-tile:hover{
+    transform:rotate(0deg) translateY(-4px) scale(1.02);
+    box-shadow:0 20px 40px -10px rgba(93,112,82,.2);
+    z-index:1;
+  }
+  .gallery-tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .gallery-tile:hover img{transform:scale(1.06)}
+  .gallery-tile__placeholder{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;
+    color:var(--accent-fg);font-weight:700;font-size:.85rem;text-align:center;padding:1rem;
+    background:radial-gradient(circle at 30% 30%, rgba(93,112,82,.18), transparent 60%),
+               radial-gradient(circle at 70% 70%, rgba(193,140,93,.2), transparent 60%),
+               var(--muted);
+  }
+  .gallery-tile__placeholder strong{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700}
+
+  /* ---- Contact ---- */
+  .contact{display:grid;gap:2.5rem;margin-top:3rem}
+  @media(min-width:1024px){.contact{grid-template-columns:1fr 1.1fr;align-items:stretch}}
+  .contact__card{
+    background:#FEFEFA;
+    border:1px solid rgba(222,216,207,.5);
+    border-radius:2rem 2rem 2rem 4rem;
+    box-shadow:var(--shadow-soft);
+    padding:2.5rem 2.25rem;
+  }
+  .contact__row{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed var(--border)}
+  .contact__row:last-child{border-bottom:none}
+  .contact__row .card__icon{width:2.9rem;height:2.9rem;margin:0;flex-shrink:0}
+  .contact__label{font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-fg)}
+  .contact__value{font-weight:700;font-size:1.05rem}
+  .contact__value a{text-decoration:none;color:var(--primary)}
+  .contact__value a:hover{text-decoration:underline}
+  .hours{list-style:none;font-weight:700}
+  .hours li{display:flex;justify-content:space-between;gap:1.5rem}
+  .hours .closed{color:var(--secondary)}
+  .map-frame{
+    border-radius:40% 60% 60% 40% / 45% 45% 55% 55%;
+    overflow:hidden;
+    border:4px solid #fff;
+    box-shadow:var(--shadow-float);
+    min-height:24rem;
+  }
+  @media(max-width:1023px){.map-frame{border-radius:2rem}}
+  .map-frame iframe{width:100%;height:100%;min-height:24rem;border:0;display:block}
+
+  /* ---- CTA band ---- */
+  .cta{position:relative;overflow:hidden;background:var(--primary);text-align:center;padding:6rem 1rem}
+  .cta .blob--sand{width:26rem;height:26rem;top:-10rem;right:-6rem;opacity:.18}
+  .cta .blob--clay{width:22rem;height:22rem;bottom:-8rem;left:-6rem;opacity:.3}
+  .cta__inner{position:relative;z-index:1;max-width:46rem;margin:0 auto}
+  .cta h2{color:var(--primary-fg);font-size:2.25rem;margin-bottom:1rem}
+  .cta p{color:rgba(243,244,241,.85);font-size:1.1rem;margin-bottom:2.25rem}
+  .cta .btn--light{background:var(--background);color:var(--primary);box-shadow:0 6px 24px -4px rgba(0,0,0,.2)}
+  .cta .btn--light:hover{transform:scale(1.05)}
+  @media(min-width:768px){.cta h2{font-size:3rem}}
+
+  /* ---- Footer ---- */
+  footer{padding:3rem 1rem;text-align:center;color:var(--muted-fg);font-size:.95rem}
+  footer .nav__logo{margin:0 auto 1rem}
+  footer a{color:var(--primary);font-weight:700;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{transition:none!important;animation:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="nav__brand" href="#home">
+        <img class="nav__logo" src="https://olivenailboutique.com/olive12.jpg" alt="Olive Nail Boutique logo">
+        <span class="nav__name">Olive Nail Boutique</span>
       </a>
-        <a href="#home" style="margin-right: 20px; text-decoration: none; color: #2C2C2C;">Home</a>
-        <a href="#menu" style="margin-right: 20px; text-decoration: none; color: #2C2C2C;">Menu</a>
-        <a href="#contact" style="text-decoration: none; color: #2C2C2C;">Contact</a>
+      <ul class="nav__links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn btn--primary nav__cta" href="tel:7045957078">Call (704) 595-7078</a>
+      <a class="nav__call-sm" href="tel:7045957078">Call us</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="blob blob--moss"></div>
+    <div class="blob blob--clay"></div>
+    <div class="hero__inner">
+      <div class="hero__logo-frame">
+        <img src="https://olivenailboutique.com/olive12.jpg" alt="Olive Nail Boutique">
+      </div>
+      <span class="hero__eyebrow">Charlotte, North Carolina</span>
+      <h1>Olive Nail Boutique</h1>
+      <p class="hero__tagline">Where elegance meets care. A calm, unhurried space for hands and feet — premium products, skilled technicians, and time that feels like your own.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="#menu">View our services</a>
+        <a class="btn btn--outline btn--lg" href="#contact">Contact us</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  
-<div style="position: sticky; top: 0; z-index: 1000; background-color: #F4F1EB; text-align: right; padding: 10px 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><a href="tel:7045957078" style="padding: 10px 20px; background-color: #5A6E44; color: white; border-radius: 8px; text-decoration: none; font-size: 1em;">Call (704) 595-7078</a></div><!-- Logo at Top -->
-<div style="background-color: #F4F1EB; padding: 30px 40px 0 40px;">
-  <img src="olive12.jpg" alt="Olive Nail Boutique Logo" style="max-width: 180px; height: auto;">
-</div>
-
-<!-- Home Section -->
-  <div id="home" style="padding: 40px; max-width: 900px; margin: auto; line-height: 1.6;">
-    <h1 style="color: #5A6E44; text-align: center; font-size: 3em;">Olive Nail Boutique</h1>
-    <p style="text-align: center; font-style: italic; font-size: 1.2em;">Where elegance meets care.</p>
-    <div style="text-align: center; margin-top: 30px;">
-      <a href="#menu" style="background-color: #5A6E44; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">View Our Services</a>
-      <a href="#contact" style="margin-left: 20px; color: #5A6E44; text-decoration: underline;">Contact Us</a>
+  <!-- Welcome -->
+  <section class="section">
+    <div class="section__inner welcome">
+      <div class="welcome__img-wrap">
+        <div class="welcome__img">
+          <img src="https://olivenailboutique.com/olive12.jpg" alt="Inside Olive Nail Boutique">
+        </div>
+      </div>
+      <div>
+        <p class="section__eyebrow">Welcome to our salon</p>
+        <h2>A quieter kind of nail care</h2>
+        <p>At Olive Nail Boutique, we are committed to providing a relaxing and luxurious experience for every client. Our curated services focus on both beauty and wellness, using only premium products and skilled techniques to leave you feeling pampered and polished.</p>
+        <p>Please visit our Instagram for the holiday schedule.</p>
+        <a class="btn btn--primary" href="#contact">Plan your visit</a>
+      </div>
     </div>
-    <hr style="border: 1px solid #5A6E44; margin: 40px 0;">
-    <h2 style="color: #5A6E44;">Welcome to Our Salon</h2>
-    <p>  *A new website is currently in development. Please visit our Instagram for the holiday schedule*<p>
-    <p>   At Olive Nail Boutique, we are committed to providing a relaxing and luxurious experience for every client. Our curated services focus on both beauty and wellness, using only premium products and skilled techniques to leave you feeling pampered and polished.</p>
-    <h2 style="color: #5A6E44;">Why Choose Us?</h2>
-    <ul>
-      <li>Experienced and caring technicians</li>
-      <li>Clean, tranquil environment</li>
-      <li>Customized care for hands and feet</li>
-    </ul>
-  </div>
+  </section>
 
-  <!-- Manicures & Pedicures Section -->
-  <div id="menu">
-    
+  <!-- Why choose us -->
+  <section class="section section--stone">
+    <div class="section__inner" style="text-align:center">
+      <p class="section__eyebrow">Why choose us</p>
+      <h2>Care in every detail</h2>
+      <div class="cards" style="text-align:left">
+        <div class="card">
+          <div class="card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/></svg>
+          </div>
+          <h3>Experienced, caring technicians</h3>
+          <p>Skilled hands and genuine attention. Every service is done thoughtfully, never rushed.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+          </div>
+          <h3>Clean, tranquil environment</h3>
+          <p>A bright, calm space kept to the highest standards of cleanliness — so you can truly unwind.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <h3>Customized care for hands &amp; feet</h3>
+          <p>Services shaped around you — your nails, your skin, your pace. Beauty and wellness together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Then organized additional services -->
-    
-<!-- Services Menu via Images (Mobile-Responsive) -->
-<div id="menu" style="padding: 40px; max-width: 1000px; margin: auto; text-align: center;">
-  <h2 style="color: #5A6E44;">Our Services</h2>
-  <p style="margin-bottom: 30px;">View our full menu below:</p>
-  <li><img src="menu3.png" alt="Menu Part 1" style="width: 100%; max-width: 800px; height: auto; margin-bottom: 30px; border: 1px solid #ccc;">
-  <img src="menu4.png" alt="Menu Part 2" style="width: 100%; max-width: 800px; height: auto; border: 1px solid #ccc;"></li>
-</div>
+  <!-- Services / Menu -->
+  <section class="section" id="menu">
+    <div class="section__inner" style="text-align:center">
+      <p class="section__eyebrow">Our services</p>
+      <h2>The full menu</h2>
+      <p class="section__lead" style="margin:0 auto">Browse our complete list of services and pricing below, or give us a call — we're happy to help you choose.</p>
+      <div class="menu-grid">
+        <div class="menu-frame menu-frame--left">
+          <img src="https://olivenailboutique.com/menu3.png" alt="Olive Nail Boutique service menu, part 1">
+        </div>
+        <div class="menu-frame menu-frame--right">
+          <img src="https://olivenailboutique.com/menu4.png" alt="Olive Nail Boutique service menu, part 2">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- Instagram gallery -->
+  <section class="section" id="gallery">
+    <div class="section__inner" style="text-align:center">
+      <p class="section__eyebrow">From our Instagram</p>
+      <h2>Recent work</h2>
+      <p class="section__lead" style="margin:0 auto">A look at what's been on our nail table lately. Follow <a href="https://www.instagram.com/olivenailboutique" target="_blank" rel="noopener" style="color:var(--primary);font-weight:800;text-decoration:none">@olivenailboutique</a> for the latest sets and the holiday schedule.</p>
 
-  <!-- Contact Section -->
-  <div id="contact" style="padding: 40px; max-width: 900px; margin: auto;">
-    <h2 style="color: #5A6E44;">Contact Us</h2>
-    <p><strong>Address:</strong> 816 Lamar Ave, Charlotte, NC 28204</p>
-    <p><strong>Phone:</strong> (704) 595-7078</p>
-    <p><strong>Email:</strong> olivenails25@gmail.com</p>
-    <p><strong>Hours:</strong><br>Monday – Friday: 10:00AM – 7:00PM<br>Saturday: 10:00AM – 6:00PM<br>Sunday: Closed</p>
-  <!-- Google Maps Embed -->
-<div style="margin-top: 20px;">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.324358423261!2d-80.83051098478435!3d35.216752580301294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856a00db44d13ed%3A0x63cbd5e1b45cf352!2s816%20Lamar%20Ave%2C%20Charlotte%2C%20NC%2028204!5e0!3m2!1sen!2sus!4v1717389623456!5m2!1sen!2sus"
-    width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+      <div class="gallery-grid">
+        <div class="gallery-tile">
+          <img src="/gallery1.jpg" alt="Nail design from Olive Nail Boutique" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;gallery-tile__placeholder&quot;&gt;&lt;strong&gt;Photo coming soon&lt;/strong&gt;&lt;span&gt;Add gallery1.jpg&lt;/span&gt;&lt;/div&gt;'">
+        </div>
+        <div class="gallery-tile">
+          <img src="/gallery2.jpg" alt="Nail design from Olive Nail Boutique" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;gallery-tile__placeholder&quot;&gt;&lt;strong&gt;Photo coming soon&lt;/strong&gt;&lt;span&gt;Add gallery2.jpg&lt;/span&gt;&lt;/div&gt;'">
+        </div>
+        <div class="gallery-tile">
+          <img src="/gallery3.jpg" alt="Nail design from Olive Nail Boutique" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;gallery-tile__placeholder&quot;&gt;&lt;strong&gt;Photo coming soon&lt;/strong&gt;&lt;span&gt;Add gallery3.jpg&lt;/span&gt;&lt;/div&gt;'">
+        </div>
+        <div class="gallery-tile">
+          <img src="/gallery4.jpg" alt="Nail design from Olive Nail Boutique" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;gallery-tile__placeholder&quot;&gt;&lt;strong&gt;Photo coming soon&lt;/strong&gt;&lt;span&gt;Add gallery4.jpg&lt;/span&gt;&lt;/div&gt;'">
+        </div>
+        <div class="gallery-tile">
+          <img src="/gallery5.jpg" alt="Nail design from Olive Nail Boutique" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;gallery-tile__placeholder&quot;&gt;&lt;strong&gt;Photo coming soon&lt;/strong&gt;&lt;span&gt;Add gallery5.jpg&lt;/span&gt;&lt;/div&gt;'">
+        </div>
+        <div class="gallery-tile">
+          <img src="/gallery6.jpg" alt="Nail design from Olive Nail Boutique" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;gallery-tile__placeholder&quot;&gt;&lt;strong&gt;Photo coming soon&lt;/strong&gt;&lt;span&gt;Add gallery6.jpg&lt;/span&gt;&lt;/div&gt;'">
+        </div>
+      </div>
 
-  </div>
+      <div style="margin-top:2.5rem">
+        <a class="btn btn--outline" href="https://www.instagram.com/olivenailboutique" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          Follow us on Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section--stone" id="contact">
+    <div class="section__inner">
+      <p class="section__eyebrow">Contact us</p>
+      <h2>Come find us</h2>
+      <p class="section__lead">We'd love to see you. Walk-ins welcome, or call ahead to plan your visit.</p>
+      <div class="contact">
+        <div class="contact__card">
+          <div class="contact__row">
+            <div class="card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.79a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact__label">Address</div>
+              <div class="contact__value">816 Lamar Ave, Charlotte, NC 28204</div>
+            </div>
+          </div>
+          <div class="contact__row">
+            <div class="card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact__label">Phone</div>
+              <div class="contact__value"><a href="tel:7045957078">(704) 595-7078</a></div>
+            </div>
+          </div>
+          <div class="contact__row">
+            <div class="card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </div>
+            <div>
+              <div class="contact__label">Email</div>
+              <div class="contact__value"><a href="mailto:olivenails25@gmail.com">olivenails25@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact__row">
+            <div class="card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div style="flex:1">
+              <div class="contact__label">Hours</div>
+              <ul class="hours">
+                <li><span>Monday – Friday</span><span>10:00 AM – 7:00 PM</span></li>
+                <li><span>Saturday</span><span>10:00 AM – 6:00 PM</span></li>
+                <li><span>Sunday</span><span class="closed">Closed</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.324358423261!2d-80.83051098478435!3d35.216752580301294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856a00db44d13ed%3A0x63cbd5e1b45cf352!2s816%20Lamar%20Ave%2C%20Charlotte%2C%20NC%2028204!5e0!3m2!1sen!2sus!4v1717389623456!5m2!1sen!2sus"
+            title="Map to Olive Nail Boutique, 816 Lamar Ave, Charlotte NC"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="blob blob--sand"></div>
+    <div class="blob blob--clay"></div>
+    <div class="cta__inner">
+      <h2>Ready to feel pampered and polished?</h2>
+      <p>Call us to book your visit — we'll take care of the rest.</p>
+      <a class="btn btn--light btn--lg" href="tel:7045957078">Call (704) 595-7078</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <img class="nav__logo" src="https://olivenailboutique.com/olive12.jpg" alt="">
+    <p><strong>Olive Nail Boutique</strong> · 816 Lamar Ave, Charlotte, NC 28204</p>
+    <p><a href="tel:7045957078">(704) 595-7078</a> · <a href="mailto:olivenails25@gmail.com">olivenails25@gmail.com</a></p>
+    <p style="margin-top:.75rem">Where elegance meets care.</p>
+  </footer>
 
 </body>
 </html>
